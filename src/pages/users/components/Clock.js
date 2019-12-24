@@ -24,7 +24,7 @@ class Clock extends Component {
     render() {
       return (
         <p className={styles.clock}>
-          系统时间 {this.state.time}.
+          {this.props.name} {this.state.time}.
         </p>
       );
     }
