@@ -12,13 +12,37 @@
 
 .time {
   margin-left: 5em;
-  margin-top: 5em;
+  margin-top: 1em;
 }
 
 .clock{
   color: rgba(0, 0, 0, 0.85);
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 80px;
   font-size: 20px;
   font-weight: 600;
+}
+
+.title{
+  color: rgba(0, 0, 0, 0.85);
+  margin-top: 20px;
+  margin-left: 180px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.badge{
+  color: rgba(0, 0, 0, 0.85);
+  margin-top: 20px;
+  margin-left: 130px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.scroll-wrapper{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.button{
+  margin-bottom: 10px;
 }

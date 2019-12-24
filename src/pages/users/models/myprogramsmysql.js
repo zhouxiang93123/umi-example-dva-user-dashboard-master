@@ -1,7 +1,7 @@
-import * as myprogramsService from '../services/myprograms';
+import * as myprogramsService from '../services/myprogramsmysql';
 
 export default  {
-  namespace: 'myprograms',
+  namespace: 'myprogramsmysql',
   state: {
     tags: [],
     value:1,

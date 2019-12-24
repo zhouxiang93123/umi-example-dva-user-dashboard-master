@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import { Table, Pagination, Popconfirm, Button ,Card,Row,Col} from 'antd';
+import { Table, Pagination, Popconfirm, Button ,Card,Row,Col,Badge} from 'antd';
 import { routerRedux, Redirect } from 'dva/router';
 import styles from './Users.css';
 import { PAGE_SIZE } from '../constants';
@@ -8,7 +8,7 @@ import React from 'react';
 import { Timeline } from 'antd';
 import Clock from './Clock';
 import Myprogram from './Myprogram';
-
+import MyprogramMysql from "./MyprogramMysql";
 function Users({ dispatch, list: dataSource,programe, loading, total, page: current }) {
   function deleteHandler(id) {
     dispatch({
@@ -71,19 +71,9 @@ function Users({ dispatch, list: dataSource,programe, loading, total, page: curr
     },
   ];
 
-  const listItems = programe.map((programe) =>
-  <Timeline.Item color={programe.color} >
-    <p>
-      {programe.program_name}
-      <br></br>
-      
-      {programe.program_title}
-    </p>
-  </Timeline.Item>
-);
   return (
     <div className={styles.normal}>
-      
+
       <div>
         <div className={styles.create}>
           <UserModal record={{}} onOk={createHandler}>
@@ -104,40 +94,55 @@ function Users({ dispatch, list: dataSource,programe, loading, total, page: curr
           pageSize={PAGE_SIZE}
           onChange={pageChangeHandler}
         />
-        
+
           <React.Fragment>
             <Row gutter={24}>
-              <Col xl={6} lg={24} md={24} sm={24} xs={24}>
-                <Clock/>
-                
-                
+              <Col xl={7} lg={24} md={24} sm={24} xs={24}>
+                <Clock name="系统时间"/>
+                <h2 className={styles.title}>
+                  网上节目表
+                </h2>
+                <div className={styles.badge}>
+                  <Badge status="processing" text="一般" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <Badge status="success" text="安全" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <Badge status="error" text="严重危害" />
+                </div>
                   <div className={styles.time}>
                     <div id="components-timeline-demo-color">
-                      <Timeline>
-                      {listItems}
-                      </Timeline>
+                      <MyprogramMysql/>
                     </div>
                   </div>
-                
               </Col>
-              <Col xl={6} lg={24} md={24} sm={24} xs={24}>
-                <Clock/>
+              <Col xl={7} lg={24} md={24} sm={24} xs={24}>
+                <Clock name="节目时间"/>
+                <h2 className={styles.title}>
+                  实时节目表
+                </h2>
+                <div className={styles.badge}>
+                  <Badge status="processing" text="一般" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <Badge status="success" text="安全" />
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <Badge status="error" text="严重危害" />
+                </div>
                   <div className={styles.time}>
                     <div id="components-timeline-demo-color">
                       <Myprogram/>
                     </div>
                   </div>
-                
               </Col>
-             
+
             </Row>
-            
+
           </React.Fragment>
-          
-        
+
+
       </div>
-      
+
     </div>
+
   );
 }
 

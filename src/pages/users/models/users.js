@@ -19,7 +19,7 @@ export default {
   effects: {
     *fetch({ payload: { page = 1 } }, { call, put }) {
       const { data, headers } = yield call(usersService.fetch, { page });
-    
+
       yield put({
         type: 'save',
         payload: {
@@ -31,7 +31,7 @@ export default {
     },
     *fetch2({ payload: { page = 1 } }, { call, put }) {
       const { data, headers } = yield call(usersService.fetchTime, { page });
-   
+
       yield put({
         type: 'save2',
         payload: {
@@ -58,10 +58,10 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        
+
         if (pathname === '/users') {
           dispatch({ type: 'fetch', payload: query });
-          dispatch({ type: 'fetch2', payload: query });
+          // dispatch({ type: 'fetch2', payload: query });
         }
       });
     },
