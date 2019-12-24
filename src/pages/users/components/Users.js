@@ -6,6 +6,9 @@ import { PAGE_SIZE } from '../constants';
 import UserModal from './UserModal';
 import React from 'react';
 import { Timeline } from 'antd';
+import Clock from './Clock';
+import Myprogram from './Myprogram';
+
 function Users({ dispatch, list: dataSource,programe, loading, total, page: current }) {
   function deleteHandler(id) {
     dispatch({
@@ -68,12 +71,19 @@ function Users({ dispatch, list: dataSource,programe, loading, total, page: curr
     },
   ];
 
-  const numbers =programe;
-  const listItems = numbers.map((numbers) =>
-  <Timeline.Item color={numbers.col} >{numbers.text}</Timeline.Item>
+  const listItems = programe.map((programe) =>
+  <Timeline.Item color={programe.color} >
+    <p>
+      {programe.program_name}
+      <br></br>
+      
+      {programe.program_title}
+    </p>
+  </Timeline.Item>
 );
   return (
     <div className={styles.normal}>
+      
       <div>
         <div className={styles.create}>
           <UserModal record={{}} onOk={createHandler}>
@@ -98,6 +108,8 @@ function Users({ dispatch, list: dataSource,programe, loading, total, page: curr
           <React.Fragment>
             <Row gutter={24}>
               <Col xl={6} lg={24} md={24} sm={24} xs={24}>
+                <Clock/>
+                
                 
                   <div className={styles.time}>
                     <div id="components-timeline-demo-color">
@@ -108,12 +120,20 @@ function Users({ dispatch, list: dataSource,programe, loading, total, page: curr
                   </div>
                 
               </Col>
+              <Col xl={6} lg={24} md={24} sm={24} xs={24}>
+                <Clock/>
+                  <div className={styles.time}>
+                    <div id="components-timeline-demo-color">
+                      <Myprogram/>
+                    </div>
+                  </div>
+                
+              </Col>
              
             </Row>
             
           </React.Fragment>
           
-       
         
       </div>
       

@@ -14,3 +14,11 @@
   margin-left: 5em;
   margin-top: 5em;
 }
+
+.clock{
+  color: rgba(0, 0, 0, 0.85);
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
